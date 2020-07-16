@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>SistDenuncia</title>
+    <title>Sistdenuncia</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
