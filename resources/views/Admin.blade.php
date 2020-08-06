@@ -1,4 +1,4 @@
-<h1>Area de admin</h1>
+<h1>ADM</h1>
 @extends('layouts.app')
 
 @section('content')

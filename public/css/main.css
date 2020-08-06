@@ -85,13 +85,13 @@ html, body {
 }
 
 body {
-   background: #19191b;
+   background:white;
    font-family: "metropolis-regular", sans-serif;
    font-size: 1.6rem;
    font-style: normal;
    font-weight: normal;
    line-height: 1.875;
-   color: #656565;
+   color: black;
    margin: 0;
    padding: 0;
 }
@@ -847,7 +847,7 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-   background-color: #b8b8b8;
+   background-color: red;
    border-color: #b8b8b8;
    color: #000000;
    outline: 0;

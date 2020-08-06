@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 use Illuminate\Http\Request;
-use App\Post;
-use Illuminate\Support\Facades\Storage;
 
-class PostControlador extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,8 @@ class PostControlador extends Controller
      */
     public function index()
     {
-        $posts = Post::All();
-        return view('index', array('posts' => $posts));
-    }
-    public function home()
-    {
-       /* $posts = Post::All();
-        return view('home', array('posts' => $posts));*/
+        $user = User::All();
+        return view('user.index', ['user' => $user]);
     }
 
     /**
@@ -31,7 +25,7 @@ class PostControlador extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,18 +34,10 @@ class PostControlador extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-  
-    public function download($id)
+    public function store(Request $request)
     {
-        $post = POST::find($id);
-        if(isset($post)){
-            $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($post->arquivo);
-            return response()->download($path);
-
-        }
-        return redirect('/');
+        //
     }
-
 
     /**
      * Display the specified resource.
@@ -59,10 +45,16 @@ class PostControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
+   
     public function show($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('user.show', array('user' => $user ));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -70,9 +62,9 @@ class PostControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+       return view('user.edit');
     }
 
     /**
@@ -82,9 +74,18 @@ class PostControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request, User $user)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->idade = $request->idade;
+        $user->contato = $request->contato;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+    
+        return redirect()->route('user.index');
     }
 
     /**
@@ -95,14 +96,9 @@ class PostControlador extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        if (isset($post)){
-            $arquivo = $post->arquivo;
-            Storage::disk('public')->delete('arquivo');
-            $post->delete();
-
-        }
-        return redirect('/');
-
+        $user = User::find($id);
+      //  return redirect()->back();                   
+        $user->delete();
+                return redirect()->route('user.index');
     }
 }

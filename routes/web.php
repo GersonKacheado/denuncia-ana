@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +19,34 @@ Route::get('/', function () {
     return view('index');
 });
 
+
+
+
+
+//Route::get('/', 'HomeController@index')->name('index');
+
+Route::get('/home', 'HomeController@home')->name('home');
+
+//Route::resource('/', 'PostControlador');
+
+Route::get('/denuncia', 'PostControlador@home');
+Route::post('/arquivo', 'PostControlador@store');
+Route::delete('d/{id}', 'PostControlador@destroy');
+Route::get('a/download/{id}', 'PostControlador@download');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'PostControlador@home');
-Route::post('/', 'PostControlador@store');
-Route::delete('/{id}', 'PostControlador@destroy');
-Route::get('/download/{id}', 'PostControlador@download');
+Route::resource('/user', 'UserController');
+Route::get('/user/listar/{id}', 'UserController@show');
+
+//Route::get('/user/index', 'UserController@index');
+
+
+
+
+
 
 
 
