@@ -1,4 +1,4 @@
-<h3>ADMIN1</h3>
+<h3>ADMIN</h3>
 
 
     @foreach ($posts as $post)
