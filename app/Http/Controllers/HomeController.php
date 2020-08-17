@@ -31,28 +31,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function store(Request $request)
-    {
-        $path =  $request->file('arquivo')->store('img', 'public');
-        $post = new Post();
-        $post->email = $request->input('email');
-        $post->mensagem = $request->input('mensagem');
-        $post->arquivo = $path;
-        $post->save();
-        return redirect('/');
-    
-    }
-    public function download($id)
-    {
-        $post = POST::find($id);
-        if(isset($post)){
-            $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($post->arquivo);
-            return response()->download($path);
-
-        }
-        return redirect('/');
-    }
-
+  
 
 }
 

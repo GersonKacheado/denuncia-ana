@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 
 class PostControlador extends Controller
@@ -15,14 +16,13 @@ class PostControlador extends Controller
      */
     public function index()
     {
-        $posts = Post::All();
-        return view('index', array('posts' => $posts));
+        //
     }
-    public function home()
+    /*public function home()
     {
-       /* $posts = Post::All();
-        return view('home', array('posts' => $posts));*/
-    }
+        $posts = POST::All();
+        return view('home', compact(['posts']));
+    }*/
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +31,7 @@ class PostControlador extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,7 +40,17 @@ class PostControlador extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-  
+    public function store(Request $request)
+    {
+        $path =  $request->file('arquivo')->store('img', 'public');
+        $post = new POST();
+        $post->email = $request->input('email');
+        $post->mensagem = $request->input('mensagem');
+        $post->arquivo = $path;
+        $post->save();
+        return redirect('/');
+    
+    }
     public function download($id)
     {
         $post = POST::find($id);
@@ -49,7 +59,7 @@ class PostControlador extends Controller
             return response()->download($path);
 
         }
-        return redirect('/');
+        return redirect('/admin');
     }
 
 
@@ -59,10 +69,11 @@ class PostControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+   /* public function show()
     {
-        //
-    }
+        $post = POST::all();
+        return view('admin', ['Posts' => $post]);
+    }*/
 
     /**
      * Show the form for editing the specified resource.

@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@home')->name('home');
 
-//Route::resource('/', 'PostControlador');
+Route::resource('/enviadenuncia', 'PostControlador');
 
 Route::get('/denuncia', 'PostControlador@home');
 Route::post('/arquivo', 'PostControlador@store');
