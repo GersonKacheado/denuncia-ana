@@ -1,61 +1,22 @@
-{{--@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif 
-
-                  
-
-                    You are logged in como usuario!
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 <!doctype html>
 <html lang="pt-br">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <title>Denuncia</title>
-    <style>
-        body { padding: 20px; }
-        .navbar { margin-bottom: 20px; }
-        :root { --jumbotron-padding-y: 10px; }
-        .jumbotron {
-          padding-top: var(--jumbotron-padding-y);
-          padding-bottom: var(--jumbotron-padding-y);
-          margin-bottom: 0;
-          background-color: #fff;
-        }
-        @media (min-width: 768px) {
-          .jumbotron {
-            padding-top: calc(var(--jumbotron-padding-y) * 2);
-            padding-bottom: calc(var(--jumbotron-padding-y) * 2);
-          }
-        }
-        .jumbotron p:last-child { margin-bottom: 0; }
-        .jumbotron-heading { font-weight: 300; }
-        .jumbotron .container { max-width: 40rem; }
-        .btn-card { margin: 4px; }
-        .btn { margin-right: 5px; }
-        footer { padding-top: 3rem; padding-bottom: 3rem; }
-        footer p { margin-bottom: .25rem; }
-    </style>
+    <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body>
 
@@ -72,13 +33,6 @@
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Registre aqui sua Denuncia</h1>
-
-
-
-
-
-
-
 
           <form method="POST" action="/enviadenuncia" enctype="multipart/form-data">
             @csrf
@@ -98,9 +52,60 @@
               <button type="submit" class="btn btn-primary my-2">Enviar</button>
               <button type="reset" class="btn btn-secondary my-2">Cancelar</button>
             </p>
+        
+              
+            
+              
+           
           </form>
           
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a  href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+           {{ __('Sair') }}
+       </a>
+       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+           @csrf
+       </form> </button>
+        
+
+          
+
+
+{{--      <div class="album py-5 bg-light">
+         <div class="container">
+           <div class="row">
+            @foreach($posts as $c)           
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top figure-img img-fluid rounded" src="/storage/{{$c->arquivo}}">
+              <div class="card-body">
+                <p class="card-text">{{$c->email}}</p>
+                <p class="card-text">{{$c->mensagem}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <!--button type="button" class="btn btn-sm btn-outline-secondary">Download</button-->
+                    <a type="button" class="btn btn-sm btn-outline-secondary" href="/download/{{$c->id}}">Download</a>
+                    <form method="post" action="/{{$c->id}}">
+                      @csrf
+                      <input type="hidden" name="_method" value="delete">
+                      <button type="submit" class="btn btn-sm btn-outline-danger">Apagar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+           </div>
+         </div>
+       </div> --}}
+
+
+
+
+          
+         {{---<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
@@ -112,7 +117,7 @@
             </form>
         </div>
 
-
+---}}
 
 
 
@@ -151,7 +156,18 @@
       </div>--}}
 
     </main>
-    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+    <!-- jQuery -->
+
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+   
 </body>
 </html>
 

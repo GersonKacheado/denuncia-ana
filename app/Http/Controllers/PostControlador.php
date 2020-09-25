@@ -16,8 +16,24 @@ class PostControlador extends Controller
      */
     public function index()
     {
-        //
-    }
+            $users = User::all();
+            $posts = Post::all();
+            return view('listagemdenuncia.index', compact('posts', 'users'));
+     }  
+
+
+     public function listarindex(){
+
+        $users = User::all();
+        $posts = Post::all();
+        return view('/adminhome', compact('posts', 'users'));
+
+
+
+
+
+     }
+    
     /*public function home()
     {
         $posts = POST::All();
@@ -44,6 +60,7 @@ class PostControlador extends Controller
     {
         $path =  $request->file('arquivo')->store('img', 'public');
         $post = new POST();
+        $post->users_id = auth()->id();
         $post->email = $request->input('email');
         $post->mensagem = $request->input('mensagem');
         $post->arquivo = $path;
@@ -53,13 +70,14 @@ class PostControlador extends Controller
     }
     public function download($id)
     {
-        $post = POST::find($id);
-        if(isset($post)){
-            $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($post->arquivo);
+        $posts = Post::find($id);
+        if(isset($posts)){
+            $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($posts->arquivo);
             return response()->download($path);
 
         }
-        return redirect('/admin');
+        return redirect('/');
+        
     }
 
 

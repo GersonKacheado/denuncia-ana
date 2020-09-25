@@ -20,19 +20,19 @@ Route::get('/', function () {
 });
 
 
-
+Route::get('/adminhome', 'PostControlador@listarindex');
 
 
 //Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/listagemdenuncia/index','PostControlador@index');
 
 Route::resource('/enviadenuncia', 'PostControlador');
-
 Route::get('/denuncia', 'PostControlador@home');
 Route::post('/arquivo', 'PostControlador@store');
-Route::delete('d/{id}', 'PostControlador@destroy');
-Route::get('a/download/{id}', 'PostControlador@download');
+Route::delete('/{id}', 'PostControlador@destroy');
+Route::get('/download/{id}', 'PostControlador@download');
 
 
 Auth::routes();
@@ -42,6 +42,7 @@ Route::resource('/user', 'UserController');
 Route::get('/user/listar/{id}', 'UserController@show');
 
 //Route::get('/user/index', 'UserController@index');
+
 
 
 

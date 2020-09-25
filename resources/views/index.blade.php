@@ -67,7 +67,7 @@
 
                     <form role="search" method="get" class="header__search-form" action="#">
                         <label>
-                            <span class="hide-content">Search for:</span>
+                            <span class="hide-content">Pesquisar:</span>
                             <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
                         </label>
                         <input type="submit" class="search-submit" value="Search">
@@ -85,9 +85,9 @@
                     <h2 class="header__nav-heading h6">Site Navigation</h2>
 
                     <ul class="header__nav">
-                        <li class="current"><a href="index.html" title="">Home</a></li>
+                        <li class="current"><a href="index.html" title="">Início</a></li>
                         <li class="has-children">
-                            <a href="#0" title="">Categories</a>
+                            <a href="#0" title="">Categorias</a>
                             <ul class="sub-menu">
                             <li><a href="category.html">Lifestyle</a></li>
                             <li><a href="category.html">Health</a></li>
@@ -98,7 +98,7 @@
                             </ul>
                         </li>
                         <li class="has-children">
-                            <a href="#0" title="">Blog</a>
+                            <a href="#0" title="">Denuncias</a>
                             <ul class="sub-menu">
                             <li><a href="single-video.html">Video Post</a></li>
                             <li><a href="single-audio.html">Audio Post</a></li>
@@ -106,9 +106,10 @@
                             <li><a href="single-standard.html">Standard Post</a></li>
                             </ul>
                         </li>
-                        <li><a href="style-guide.html" title="">Styles</a></li>
-                        <li><a href="about.html" title="">About</a></li>
-                        <li><a href="contact.html" title="">Contact</a></li>
+                       
+                       
+                        <li><a href="contact.html" title="">Contato</a></li>
+                        <li><a href="contact.html" title="">Quem Somos</a></li>
                     </ul> <!-- end header__nav -->
 
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -128,20 +129,11 @@
                         <div class="entry" style="background-image:url('images/thumbs/featured/featured-guitarman1.jpg');">
                             
                             <div class="entry__content">
-                                <span class="entry__category"><a href="#0">Music</a></span>
+                               
 
-                                <h1><a href="#0" title="">What Your Music Preference Says About You and Your Personality.</a></h1>
+                                <h1><a href="#0" title="">O Programa Meio Dia é um jornal que já existe no mercado Amapaense há mais de 30 anos, levando informação de maneira simples ao telespectador.</a></h1>
 
-                                <div class="entry__info">
-                                    <a href="#0" class="entry__profile-pic">
-                                        <img class="avatar" src="images/avatars/user-03.jpg" alt="">
-                                    </a>
-
-                                    <ul class="entry__meta">
-                                        <li><a href="#0">ohn Doe</a></li>
-                                        <li>December 29, 2017</li>
-                                    </ul>
-                                </div>
+                              
                             </div> <!-- end entry__content -->
                             
                         </div> <!-- end entry -->
@@ -149,7 +141,7 @@
 
                   
                     <div class="featured__column featured__column--small">
-                        <form  id="cForm" method="POST" action="{{ route('register') }}">
+                      {{--  <form  id="cForm" method="POST" action="{{ route('register') }}">
                              <h3>CADASTRE-SE.</h3>
                         @csrf
 
@@ -243,7 +235,7 @@
                             
                         </div>
                 
-                    </form> <!-- end form -->
+                    </form> <!-- end form --> -- }} ------- FORMULARIO_ANA
                     
 
                         {{-- <div class="entry" style="background-image:url('images/thumbs/featured/featured-watch.jpg');">
@@ -303,17 +295,21 @@
         
         <div class="row masonry-wrap">
             <div class="masonry">
+               
 
                 <div class="grid-sizer"></div>
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                         
-                    <div class="entry__thumb">
+                  {{--- <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/lamp-400.jpg" 
-                                    srcset="images/thumbs/masonry/lamp-400.jpg 1x, images/thumbs/masonry/lamp-800.jpg 2x" alt="">
+                            <img src="{{asset('storage/'.$post->arquivo)}}"
+
+                                  >
                         </a>
-                    </div>
+                    </div>--}}
+
+                   
     
                     <div class="entry__text">
                         <div class="entry__header">
@@ -339,24 +335,14 @@
     
                 </article> <!-- end article -->
 
-                <article class="masonry__brick entry format-quote" data-aos="fade-up">
-                        
-                    <div class="entry__thumb">
-                        <blockquote>
-                                <p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>
-    
-                                <cite>Dieter Rams</cite>
-                        </blockquote>
-                    </div>   
-    
-                </article> <!-- end article -->
+               
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                         
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/tulips-400.jpg" 
-                                    srcset="images/thumbs/masonry/tulips-400.jpg 1x, images/thumbs/masonry/tulips-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img1.png" >
+                                    {{--srcset="images/thumbs/masonry/tulips-400.jpg 1x, images/thumbs/masonry/tulips-800.jpg 2x" alt="">--}}
                         </a>
                     </div>
     
@@ -387,8 +373,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/cookies-400.jpg" 
-                                    srcset="images/thumbs/masonry/cookies-400.jpg 1x, images/thumbs/masonry/cookies-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img2.jpg" 
+                                    >
                         </a>
                     </div>
     
@@ -420,8 +406,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/wheel-400.jpg" 
-                                    srcset="images/thumbs/masonry/wheel-400.jpg 1x, images/thumbs/masonry/wheel-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img4.jpg" 
+                                  >
                         </a>
                     </div>
     
@@ -452,9 +438,9 @@
                 <article class="masonry__brick entry format-video" data-aos="fade-up">
                         
                     <div class="entry__thumb video-image">
-                        <a href="https://player.vimeo.com/video/117310401?color=01aef0&title=0&byline=0&portrait=0" data-lity>
-                            <img src="images/thumbs/masonry/shutterbug-400.jpg" 
-                                    srcset="images/thumbs/masonry/shutterbug-400.jpg 1x, images/thumbs/masonry/shutterbug-800.jpg 2x" alt="">
+                        
+                            <img src="images/thumbs/masonry/img8.jpg" 
+                                  >
                         </a>
                     </div>
     
@@ -488,16 +474,16 @@
                     <div class="entry__thumb slider">
                         <div class="slider__slides">
                             <div class="slider__slide">
-                                <img src="images/thumbs/masonry/gallery/gallery-1-400.jpg" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-1-400.jpg 1x, images/thumbs/masonry/gallery/gallery-1-800.jpg 2x" alt=""> 
+                                <img src="images/thumbs/masonry/gallery/img1.jpg" 
+                                        >
                             </div>
                             <div class="slider__slide">
-                                <img src="images/thumbs/masonry/gallery/gallery-2-400.jpg" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-2-400.jpg 1x, images/thumbs/masonry/gallery/gallery-2-800.jpg 2x" alt=""> 
+                                <img src="images/thumbs/masonry/gallery/img2.jpg" 
+                                        >
                             </div>
                             <div class="slider__slide">
-                                <img src="images/thumbs/masonry/gallery/gallery-3-400.jpg" 
-                                        srcset="images/thumbs/masonry/gallery/gallery-3-400.jpg 1x, images/thumbs/masonry/gallery/gallery-3-800.jpg 2x" alt="">  
+                                <img src="images/thumbs/masonry/gallery/img3.jpg" 
+                                      >
                             </div>
                         </div>
                     </div>
@@ -526,61 +512,15 @@
     
                 </article> <!-- end article -->
 
-                <article class="masonry__brick entry format-audio" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-audio.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/guitarman-400.jpg" 
-                                    srcset="images/thumbs/masonry/guitarman-400.jpg 1x, images/thumbs/masonry/guitarman-800.jpg 2x" alt="">
-                        </a>
-                        <div class="audio-wrap">
-                            <audio id="player" src="media/AirReview-Landmarks-02-ChasingCorporate.mp3" width="100%" height="42" controls="controls"></audio>
-                        </div>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="{{url('single-audio')}}">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="{{asset('single-audio.html')}}">hat Your Music Preference Says About You and Your Personality.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category.html">Music</a> 
-                                <a href="category.html">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-link" data-aos="fade-up">
-                    
-                    <div class="entry__thumb">
-                        <div class="link-wrap">
-                            <p>The Only Resource You Will Need To Start a Blog Using WordPress.</p>
-                            <cite>
-                                <a target="_blank" href="https://colorlib.com/">https://colorlib.com</a>
-                            </cite>
-                        </div>
-                    </div>
-                    
-                </article> <!-- end article -->
+                
+                
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/jump-400.jpg" 
-                                    srcset="images/thumbs/masonry/jump-400.jpg 1x, images/thumbs/masonry/jump-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img9.jpg" 
+                                   >
                         </a>
                     </div>
 
@@ -612,8 +552,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/beetle-400.jpg" 
-                                    srcset="images/thumbs/masonry/beetle-400.jpg 1x, images/thumbs/masonry/beetle-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img10.jpg" 
+                                   >
                         </a>
                     </div>
 
@@ -644,8 +584,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/fuji-400.jpg" 
-                                    srcset="images/thumbs/masonry/fuji-400.jpg 1x, images/thumbs/masonry/fuji-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img12.jpg" 
+                                    >
                         </a>
                     </div>
 
@@ -677,8 +617,8 @@
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="images/thumbs/masonry/sydney-400.jpg" 
-                                    srcset="images/thumbs/masonry/sydney-400.jpg 1x, images/thumbs/masonry/sydney-800.jpg 2x" alt="">
+                            <img src="images/thumbs/masonry/img5.jpg" 
+                                   >
                         </a>
                     </div>
 
@@ -696,6 +636,8 @@
                                 Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
                             </p>
                         </div>
+
+
                         <div class="entry__meta">
                             <span class="entry__meta-links">
                                 <a href="category.html">Travel</a> 
@@ -705,7 +647,7 @@
                     </div>
 
                 </article> <!-- end article -->
-
+               
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
 
@@ -860,7 +802,7 @@
                 
                 <div class="col-two md-four mob-full s-footer__sitelinks">
                         
-                    <h4>Quick Links</h4>
+                    <h4>Menu</h4>
 
                     <ul class="s-footer__linklist">
                         <li><a href="#0">Home</a></li>
@@ -868,10 +810,11 @@
                         <li><a href="#0">Styles</a></li>
                         <li><a href="#0">About</a></li>
                         <li><a href="#0">Contact</a></li>
-                        <li><a href="#0">Privacy Policy</a></li>
+                     
                     </ul>
+                    </div>
 
-                </div> <!-- end s-footer__sitelinks -->
+           <!--     </div>  end s-footer__sitelinks 
 
                 <div class="col-two md-four mob-full s-footer__archives">
                         
@@ -890,18 +833,29 @@
 
                 <div class="col-two md-four mob-full s-footer__social">
                         
-                    <h4>Social</h4>
+                    <h4> Redes Sociais</h4>
 
                     <ul class="s-footer__linklist">
-                        <li><a href="#0">Facebook</a></li>
-                        <li><a href="#0">Instagram</a></li>
-                        <li><a href="#0">Twitter</a></li>
-                        <li><a href="#0">Pinterest</a></li>
-                        <li><a href="#0">Google+</a></li>
-                        <li><a href="#0">LinkedIn</a></li>
+                        <li><a href="#0">Facebook : PROGRAMAMEIODIA</a></li>
+                        <li><a href="#0">Google+ : TV Amazônia-SBT</a></li>
+                        <li><a href="#0">Youtube: SBT AMAPÁ</a></li>
+                        <li><a href="#0">Contato:96 99199-5810 </a></li>
+                      
                     </ul>
 
                 </div> <!-- end s-footer__social -->
+
+                <div class="col-two md-four mob-full s-footer__social">
+                        
+                    <h4>Endereço</h4>
+                    <ul class="s-footer__linklist">
+                        <li><a href="#0">Rua:Hildemar Maia,2135- Buritizal.</a></li>
+                      
+                      
+                    </ul>
+                   
+
+                </div> <!-- end s-footer__social 
 
                 <div class="col-five md-full end s-footer__subscribe">
                         
