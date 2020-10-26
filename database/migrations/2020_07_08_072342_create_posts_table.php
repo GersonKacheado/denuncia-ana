@@ -17,9 +17,9 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('users_id')->unsigned();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('email');
+            $table->string('name');
             $table->string('mensagem');
-            $table->string('arquivo');
+            $table->string('arquivo')->nullable();
             $table->timestamps();
         });
     }

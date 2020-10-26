@@ -26,10 +26,10 @@
     <title>PAGINA DE EDIÇÃO DO USUARIO</title>
 </head>
 <body id="top">
-    <h4>Painel de Edição de Registro {{$id}}</h4>   
-
-    <form  id="cForm" method="POST" action="{{ route('user.update',  $id) }}">
-        <h3>RECADASTRE-SE.</h3>
+    <h4 style="text-align: center">Painel de Edição de Registro do Usuario</h4>   
+   
+    <form  id="cForm" method="POST" action="{{ route('user.update', $user->id) }}">
+        <h3 style="text-align: center">Atualizar Informações.</h3>
     @method('PUT')
    @csrf
 
@@ -37,7 +37,7 @@
        <label for="name">Nome:</label>
 
      
-           <input  id="cName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+           <input  id="cName" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  value="{{ $user->name }}" required autocomplete="name" >
 
            @error('name')
                <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
        <label for="idade">Idade:</label>
 
        
-           <input  id="cName" type="integer" class="form-control @error('idade') is-invalid @enderror" name="idade" value="{{ old('idade') }}" required autocomplete="idade" autofocus>
+           <input  id="cName" type="interger" class="form-control @error('idade') is-invalid @enderror" name="idade"  value="{{ $user->idade }}" required autocomplete="idade" autofocus>
 
            @error('idade')
                <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
        <label for="contato">Contato:</label>
 
      
-           <input  id="cName" type="text" class="form-control @error('contato') is-invalid @enderror" name="contato" value="{{ old('contato') }}" required autocomplete="contato" autofocus>
+           <input  id="cName" type="text" class="form-control @error('contato') is-invalid @enderror" name="contato"  value="{{ $user->contato }}" required autocomplete="contato" autofocus>
 
            @error('contato')
                <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
 
 
        
-           <input  id="cWebsite" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+           <input  id="cWebsite" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  value="{{ $user->email }}" required autocomplete="email">
 
            @error('email')
                <span class="invalid-feedback" role="alert">
@@ -116,11 +116,16 @@
    </div>
 
    <div class="form-field">
-       
-           <button type="submit" class="btn btn-primary">
+    <div class="form-group ml-2">
+        <input type="submit" name="btnEnviar" class="btn btn-success py-3 px-4">
+        <a href="{{ route('user.index') }}" class="btn btn-danger py-3 px-4">Cancelar</a>
+
+      </div>
+      
+          {{-- <button type="submit" class="btn btn-primary">
                {{ __('Register') }}
            </button>
-       
+       --}}
    </div>
 
 </form> 

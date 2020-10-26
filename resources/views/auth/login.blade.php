@@ -34,34 +34,77 @@
         @csrf
 
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
+          <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}">
+         
+  
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
+          @if($errors->has('email'))
+          <div class="invalid-feedback">
+              {{$errors->has('first')}}
+          </div>
+      @endif
+
+      @error('email')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password">
+        
+  
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          @if($errors->has('password'))
+          <div class="invalid-feedback">
+              {{$errors->has('first')}}
+          </div>
+      @endif
+
+      @error('password')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
+          <div class="col-3">
+            <button type="submit" class="btn btn-success btn-block">Entrar</button>
+          </div>
+          <div class="col-5">
+            <a href="{{route('register')}}" class="btn btn-primary btn-block">Cadastra-se</a>
+            </div>
+          <div class="col-4">
+          <button type="reset" class="btn btn-danger btn-block">Cancelar</button>
+          </div>
+          
+          {{--   <div class="col-8">
+        <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
-                Remember Me
+                Concordo
               </label>
             </div>
+            <a href="{{route('register')}}" class="btn btn-primary btn-block">Cadastra-se</a>
+
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+
           </div>
+          <div class="col-8">
+            <button type="submit" class="btn btn-success btn-block">Entrar</button>
+
+
+          </div>--}}
           <!-- /.col -->
         </div>
       </form>

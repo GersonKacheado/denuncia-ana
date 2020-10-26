@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\User;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class LoginControllerRS extends Controller
 {
-    public $users;
-    public $posts;
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::All();
-        return view('user.index', ['user' => $user]);
+        //
     }
 
     /**
@@ -47,19 +44,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
-   
     public function show($id)
     {
-        if(!$user = User::find($id))
-
-        return redirect()->back();
-
-            return view('user.show', [
-                        'user' => $user
-                    ]);
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -69,10 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-     //   return redirect()->back();
-        return view('user.edit', array('user'=> $user));
+        //
     }
 
     /**
@@ -82,18 +67,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request, User $users)
+    public function update(Request $request, $id)
     {
-        $users = User::find($id);
-        $users->name = $request->name;
-        $users->idade = $request->idade;
-        $users->contato = $request->contato;
-        $users->email = $request->email;
-        $users->password = bcrypt($request->password);
-        $users->save();
-
-    
-        return redirect()->route('user.index');
+        //
     }
 
     /**
@@ -104,9 +80,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-      //  return redirect()->back();                   
-        $user->delete();
-                return redirect()->route('user.index');
+        //
     }
 }

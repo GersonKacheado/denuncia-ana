@@ -68,12 +68,12 @@
                     <form role="search" method="get" class="header__search-form" action="#">
                         <label>
                             <span class="hide-content">Pesquisar:</span>
-                            <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                            <input type="search" class="search-field" placeholder="Pesquisar" value="" name="s" title="Pesquisas:" autocomplete="off">
                         </label>
                         <input type="submit" class="search-submit" value="Search">
                     </form>
         
-                    <a href="#0" title="Close Search" class="header__overlay-close">Close</a>
+                    <a href="#0" title="Close Search" class="header__overlay-close">pesquisa</a>
 
                 </div>  <!-- end header__search -->
 
@@ -82,34 +82,26 @@
 
                 <nav class="header__nav-wrap">
 
-                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+                    <h2 class="header__nav-heading h6">Barra de navegação</h2>
 
                     <ul class="header__nav">
-                        <li class="current"><a href="index.html" title="">Início</a></li>
-                        <li class="has-children">
-                            <a href="#0" title="">Categorias</a>
+                        <li class="current"><a href="{{route('index')}}" title="">Início</a></li>
+                        <li class="current"><a href="{{route('home')}}" title="">Fazer Denuncia</a></li>
+
+                       
+                       {{-- <li class="has-children">
+                        <a  title="">Fazer Denuncia</a>
                             <ul class="sub-menu">
-                            <li><a href="category.html">Lifestyle</a></li>
-                            <li><a href="category.html">Health</a></li>
-                            <li><a href="category.html">Family</a></li>
-                            <li><a href="category.html">Management</a></li>
-                            <li><a href="category.html">Travel</a></li>
-                            <li><a href="category.html">Work</a></li>
+                            <li><a href="single-video.html">Videos</a></li>
+                            <li><a href="single-gallery.html">Imagens</a></li>
                             </ul>
-                        </li>
-                        <li class="has-children">
-                            <a href="#0" title="">Denuncias</a>
-                            <ul class="sub-menu">
-                            <li><a href="single-video.html">Video Post</a></li>
-                            <li><a href="single-audio.html">Audio Post</a></li>
-                            <li><a href="single-gallery.html">Gallery Post</a></li>
-                            <li><a href="single-standard.html">Standard Post</a></li>
-                            </ul>
-                        </li>
+                        </li>--}}
                        
                        
-                        <li><a href="contact.html" title="">Contato</a></li>
-                        <li><a href="contact.html" title="">Quem Somos</a></li>
+                        <li><a href="#contato" title="">Contato</a></li>
+                        <li><a href="#somos" title="">Quem Somos</a></li>
+                    <li><a href="{{route('register')}}" title="">Cadastra-Se</a></li>
+                         <li><a href="{{route('login')}}" title="">Login</a></li>
                     </ul> <!-- end header__nav -->
 
                     <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
@@ -118,7 +110,6 @@
 
             </div> <!-- header-content -->
         </header> <!-- header -->
-
 
         <div class="pageheader-content row">
             <div class="col-full">
@@ -291,49 +282,50 @@
 
     <!-- s-content
     ================================================== -->
-    <section class="s-content">
+    <section class="s-content" id="denuncia">
         
-        <div class="row masonry-wrap">
+        <div class="row masonry-wrap" >
             <div class="masonry">
                
 
                 <div class="grid-sizer"></div>
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
-                  {{--- <div class="entry__thumb">
-                        <a href="single-standard.html" class="entry__thumb-link">
-                            <img src="{{asset('storage/'.$post->arquivo)}}"
-
-                                  >
-                        </a>
-                    </div>--}}
-
+                
                    
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 15, 2017</a>
+        </div>
+               
+
+            <!--    <article class="masonry__brick entry format-standard" data-aos="fade-up"> -->
+                   {{-- @foreach ($posts as $post)
+                    <article class="masonry__brick entry format-standard" data-aos="fade-up" >
+
+                    <div class="entry__thumb"  >
+                        <a href="" class="entry__thumb-link">
+                            <img src="{{asset('storage/'.$post->arquivo)}}" />
+                        </a>
+                        <div class="entry__text">
+                       
+                            <div class="entry__excerpt">
+                                <p>
+                                    {{$post->mensagem}}
+                                </p>
                             </div>
-                            <h1 class="entry__title"><a href="single-standard.html">Just a Standard Format Post.</a></h1>
-                            
+                            <div class="entry__meta">
+                               
+                                <span class="entry__meta-links">
+                                    <a href="category.html"> {{$post->email}}</a> 
+                                   
+                                </span>
+                            </div>
                         </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category.html">Design</a> 
-                                <a href="category.html">Photography</a>
-                            </span>
-                        </div>
-                    </div>
+                          @endforeach
+                    </div>--}}
+                  
+                    
     
-                </article> <!-- end article -->
+                  
+            
+                   
+             
 
                
 
@@ -349,20 +341,19 @@
                     <div class="entry__text">
                         <div class="entry__header">
                             
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 15, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard.html">10 Interesting Facts About Caffeine.</a></h1>
+                           
+                            <h3 class="entry__title"><a href="single-standard.html">Denuncia de Rua intrafegável.</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                              A nossa rua está completamente abandonada, quando chove não conseguimos passar, é uma calamidade o poder publico não faz nada para resolver está situação !!!
+                
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Health</a>
+                                <a href="category.html">Maria de Jesus</a>
                             </span>
                         </div>
                     </div>
@@ -380,22 +371,19 @@
     
                     <div class="entry__text">
                         <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard.html">No Sugar Oatmeal Cookies.</a></h1>
+                          
+                            <h3 class="entry__title"><a href="single-standard.html">Denuncia de Lama na Água da CAESA.</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                               Não é primeira vez que isso acontece, de sair agua barrenta na minha torneira, eu peço que a caesa dê uma explicação porque isso acontece.
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Cooking</a>
-                                <a href="category.html">Health</a>
+                                <a href="category.html">Marcio da Silva</a>
+                                
                             </span>
                         </div>
                     </div>
@@ -414,26 +402,24 @@
                     <div class="entry__text">
                         <div class="entry__header">
                             
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard.html">Visiting Theme Parks Improves Your Health.</a></h1>
+                           
+                            <h3 class="entry__title"><a href="single-standard.html">Denuncia de falta de saneamento básico.</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                               Nois moradores deste bairro sofremos diaramente com falta de agua em nossas residencias, fora a nossa rua que está péssima não dando pra passar.
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="#">Health</a> 
-                                <a href="#">Lifestyle</a>
+                                <a href="#">Camila Soares</a> 
+                                
                             </span>
                         </div>
                     </div>
     
-                </article> <!-- end article -->
+                </article> <!-- end article --->
 
                 <article class="masonry__brick entry format-video" data-aos="fade-up">
                         
@@ -447,21 +433,19 @@
                     <div class="entry__text">
                         <div class="entry__header">
                             
-                            <div class="entry__date">
-                                <a href="single-video.html">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-video.html">Key Benefits Of Family Photography.</a></h1>
+                            
+                            <h3 class="entry__title"><a href="single-video.html">Denuncia de Esgoto ao Cêu-Aberto.</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                               Temos que suportar um mau- cheiro constante que vem desse esgoto, não aguentamos mais isso, é uma grande falta de respeito com a gente.
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Family</a> 
-                                <a href="category.html">Photography</a>
+                                <a href="category.html">André Rodrigues</a> 
+                               
                             </span>
                         </div>
                     </div>
@@ -469,7 +453,7 @@
                 </article> <!-- end article -->
 
 
-                <article class="masonry__brick entry format-gallery" data-aos="fade-up">
+               {{--- <article class="masonry__brick entry format-gallery" data-aos="fade-up">
                         
                     <div class="entry__thumb slider">
                         <div class="slider__slides">
@@ -510,9 +494,7 @@
                         </div>
                     </div>
     
-                </article> <!-- end article -->
-
-                
+                </article> <!-- end article -->  ---}}
                 
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
@@ -526,31 +508,27 @@
 
                     <div class="entry__text">
                         <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard.html">Create Meaningful Family Moments.</a></h1>
+                        
+                            <h3 class="entry__title"><a href="single-standard.html">Denuncia de buraqueira na rua.</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                              Na rua onde eu moro não há mais condição de ultrapassar carro e nem moto, por que a situação está bem feia, cada buraco grande que destroí o veiculo de qualquer pessoa, eu cobro cade os nossos governantes para viram olhar pela gente aqui. 
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Family</a>
-                                <a href="category.html">Relationship</a>
+                                <a href="category.html">Icaro Mendes</a>
+                                
                             </span>
                         </div>
                     </div>
 
-                </article> <!-- end article -->
+                </article> <!-- end article --->
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
+                {{--    <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
                             <img src="images/thumbs/masonry/img10.jpg" 
                                    >
@@ -578,7 +556,7 @@
                         </div>
                     </div>
 
-                </article> <!-- end article -->
+                </article> <!-- end article --->--}}
 
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
@@ -592,28 +570,27 @@
                     <div class="entry__text">
                         <div class="entry__header">
                             
-                            <div class="entry__date">
-                                <a href="single-standard.html">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard.html">Just Another  Standard Format Post.</a></h1>
+        
+                            <h3 class="entry__title"><a href="single-standard.html">Denuncia de Lixo-Acumulado .</a></h3>
                             
                         </div>
                         <div class="entry__excerpt">
                             <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                             As pessoas do nosso bairro não tem consideração de deixar limpa nossas ruas, as pessoas que moram aqui já estão acostumadas a jogar lixo nessa região se tornou uma grande lixeira viciada, atraindo doenças e bichos peçonhentos.
                             </p>
                         </div>
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category.html">Design</a> 
-                                <a href="category.html">Photography</a>
+                                <a href="category.html">Raimundo Pereira</a> 
+                               
                             </span>
                         </div>
                     </div>
 
-                </article> <!-- end article -->
+                </article>
+                 <!-- end article -->
 
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+               {{--<article class="masonry__brick entry format-standard" data-aos="fade-up">
 
                     <div class="entry__thumb">
                         <a href="single-standard.html" class="entry__thumb-link">
@@ -646,8 +623,9 @@
                         </div>
                     </div>
 
-                </article> <!-- end article -->
-               
+                </article> 
+              <!--  end article -->
+             ---}}
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
 
@@ -797,7 +775,7 @@
     ================================================== -->
     <footer class="s-footer">
 
-        <div class="s-footer__main">
+        <div class="s-footer__main" id="contato">
             <div class="row">
                 
                 <div class="col-two md-four mob-full s-footer__sitelinks">
@@ -855,11 +833,11 @@
                     </ul>
                    
 
-                </div> <!-- end s-footer__social 
+                </div>   
 
                 <div class="col-five md-full end s-footer__subscribe">
                         
-                    <h4>Our Newsletter</h4>
+                    <h4>Fale Conosco</h4>
 
                     <p>Sit vel delectus amet officiis repudiandae est voluptatem. Tempora maxime provident nisi et fuga et enim exercitationem ipsam. Culpa consequatur occaecati.</p>
 
@@ -875,7 +853,7 @@
                         </form>
                     </div>
 
-                </div> <!-- end s-footer__subscribe -->
+                </div> <!-- end s-footer__subscribe 
 
             </div>
         </div> <!-- end s-footer__main -->

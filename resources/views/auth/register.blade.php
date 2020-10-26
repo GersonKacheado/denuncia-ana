@@ -33,52 +33,121 @@
       <form  method="POST" action="{{ route('register') }}">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="digite seu nome" name="name" value="{{ old('name') }}">
+          <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="digite seu nome" name="name" value="{{ old('name') }}" >
+         
+
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
+          @if($errors->has('name'))
+          <div class="invalid-feedback">
+              {{$errors->has('first')}}
+          </div>
+      @endif
+
+      @error('name')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
+
         </div>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="digite sua idade" name="idade" value="{{ old('idade') }}">
+            <input type="text"class="form-control @error('idade') is-invalid @enderror" placeholder="digite sua idade" name="idade" value="{{ old('idade') }}">
+         
+  
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
+            @if($errors->has('idade'))
+            <div class="invalid-feedback">
+                {{$errors->has('first')}}
+            </div>
+        @endif
+  
+        @error('idade')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
           </div>
+
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="digite seu contato"  name="contato" value="{{ old('contato') }}">
+            <input type="text" class="form-control @error('contato') is-invalid @enderror" placeholder="digite seu contato"  name="contato" value="{{ old('contato') }}">
+           
+  
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
               </div>
             </div>
+            @if($errors->has('contato'))
+            <div class="invalid-feedback">
+                {{$errors->has('first')}}
+            </div>
+        @endif
+  
+        @error('contato')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
           </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder=" digite seu Email" name="email" value="{{ old('email') }}">
+          <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder=" digite seu Email" name="email" value="{{ old('email') }}">
+         
+  
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
+          @if($errors->has('email'))
+          <div class="invalid-feedback">
+              {{$errors->has('first')}}
+          </div>
+      @endif
+
+      @error('email')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder=" digite sua senha"  name="password">
+          <input type="password"class="form-control @error('password') is-invalid @enderror" placeholder=" digite sua senha"  name="password">
+         
+  
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          @if($errors->has('password'))
+          <div class="invalid-feedback">
+              {{$errors->has('first')}}
+          </div>
+      @endif
+
+      @error('password')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="confirme sua senha" name="password_confirmation">
+          <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="confirme sua senha" name="password_confirmation">
+        
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          
         </div>
         <div class="row">
           <div class="col-8">

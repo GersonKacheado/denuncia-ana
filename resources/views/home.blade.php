@@ -19,35 +19,75 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body>
-
+ 
     <header>
       <div class="navbar navbar-dark bg-dark shadow-sm">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="#" class="navbar-brand d-flex align-items-center">                                                                                                                                                                                                                                                                            
             <strong>Faça sua Denuncia</strong>
           </a>
       </div>
     </header>
-
+    
     <main role="main">
 
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Registre aqui sua Denuncia</h1>
-
+          <div class="col-xl-10 col-lg-0 offset-xl-1 offset-lg-1">
+            @include('flash::message')
+        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
           <form method="POST" action="/enviadenuncia" enctype="multipart/form-data">
             @csrf
             <div class="form-group text-left">
-              <label for="email">Endereço de e-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="nome@dominio.com">
+              <label for="email">Digite Seu Nome</label>
+              <input type="name" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Digite seu nome" value="{{Auth::user()->name}}">
+              @if($errors->has('name'))
+              <div class="invalid-feedback">
+                  {{$errors->has('first')}}
+              </div>
+          @endif
+    
+          @error('name')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+  
             </div>
+           
             <div class="form-group text-left">
               <label for="mensagem">Sua mensagem</label>
-              <textarea class="form-control" id="mensagem" name="mensagem" rows="3"></textarea>
+              <textarea class="form-control @error('mensagem') is-invalid @enderror" id="mensagem" name="mensagem" rows="3"></textarea>
+              @if($errors->has('mensagem'))
+              <div class="invalid-feedback">
+                  {{$errors->has('first')}}
+              </div>
+          @endif
+    
+          @error('mensagem')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
             </div>
+           
+
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="arquivo" name="arquivo">
+              <input type="file" class="form-control @error('arquivo') is-invalid @enderror" id="arquivo" name="arquivo">
               <label class="custom-file-label" for="arquivo">Escolha um arquivo</label>
+              @if($errors->has('arquivo'))
+              <div class="invalid-feedback">
+                  {{$errors->has('first')}}
+              </div>
+          @endif
+    
+          @error('arquivo')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
             </div>
+          
             <p>
               <button type="submit" class="btn btn-primary my-2">Enviar</button>
               <button type="reset" class="btn btn-secondary my-2">Cancelar</button>
@@ -59,7 +99,9 @@
            
           </form>
           
-          <a  href="{{ route('logout') }}"
+      
+
+          <a  href="{{ route('index') }}"
           onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
            {{ __('Sair') }}

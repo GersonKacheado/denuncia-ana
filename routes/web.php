@@ -15,18 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'IndexController@index')->name('index');
 
+Route::resource('user', 'UserController');
+Route::resource('post', 'PostControlador');
 
-Route::get('/adminhome', 'PostControlador@listarindex');
+//Route::get('post/index', 'PostControlador@listarindex');
+//Route::get('/denuncia/index','PostControlador@listarindex');
+//Route::patch('denucia/edit/{id}', 'PostControlador@edit')->name('denuncia.edit');
 
-
-//Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/listagemdenuncia/index','PostControlador@index');
 
 Route::resource('/enviadenuncia', 'PostControlador');
 Route::get('/denuncia', 'PostControlador@home');
@@ -38,8 +37,8 @@ Route::get('/download/{id}', 'PostControlador@download');
 Auth::routes();
 
 
-Route::resource('/user', 'UserController');
-Route::get('/user/listar/{id}', 'UserController@show');
+
+//Route::get('/user/listar/{id}', 'UserController@show');
 
 //Route::get('/user/index', 'UserController@index');
 
@@ -53,4 +52,3 @@ Route::get('/user/listar/{id}', 'UserController@show');
 
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 
-Route::resource('denuncia', 'DenunciaController');

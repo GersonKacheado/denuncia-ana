@@ -742,6 +742,7 @@ textarea:focus,
 select:focus {
    color: #0054a5;
    border-bottom: 2px solid #0054a5;
+   width:900px;
 }
 
 label, legend {
@@ -916,7 +917,7 @@ input[type="button"].btn--primary:focus {
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
-   border: 0;
+   border: 1px;
    padding: 0;
 }
 
@@ -1453,14 +1454,24 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .masonry .entry__thumb {
-   position: relative;
-   overflow: hidden;
+   position: absolute;
+    overflow: hidden;
+
+  
+    
+    
+ 
+
+ 
 }
 
 .masonry .entry__thumb-link img {
    vertical-align: bottom;
    -webkit-transition: all 0.3s ease-in-out;
    transition: all 0.3s ease-in-out;
+  
+ 
+   
 }
 
 .masonry .entry__thumb-link::before {
@@ -2884,6 +2895,12 @@ html.no-csstransitions .featured {
    background-color: #f2f2f2;
    padding-top: 8.4rem;
    padding-bottom: 7.2rem;
+   
+
+  
+   
+  
+   
 }
 
 .s-content--no-padding-bottom {
@@ -2975,7 +2992,15 @@ html.no-csstransitions .featured {
 
 .masonry__brick {
    float: left;
-   padding: 0 20px;
+    padding: 0 10px;
+
+
+
+   
+   
+    
+  
+   
 }
 
 /* ------------------------------------------------------------------- 
@@ -3353,7 +3378,7 @@ footer h4::after {
    background: url(../images/icons/icon-mail.svg) 20px center no-repeat, rgba(0, 0, 0, 0.1);
    background-size: 24px 16px, auto;
    margin-bottom: 1.8rem;
-   color: rgba(255, 255, 255, 0.5);
+   color: #FFFFFF;
    border-radius: 3px;
    border: none;
 }
@@ -3411,14 +3436,14 @@ footer h4::after {
  * ------------------------------------------------------------------- */
 .s-footer__bottom .s-footer__copyright span {
    display: inline-block;
-   color: #000000;
+   color: white;
 }
 
 .s-footer__bottom .s-footer__copyright span::after {
    content: "|";
    display: inline-block;
    padding: 0 1rem 0 1.2rem;
-   color: #000000;
+   color: white;
 
 }
 
@@ -4091,7 +4116,8 @@ footer h4::after {
 
 #comments form .form-field {
    margin-bottom: 3.9rem;
-   
+
+  
 }
 
 /* ------------------------------------------------------------------- 
@@ -4169,8 +4195,8 @@ footer h4::after {
 }
 
 #map-wrap .gm-style label {
-   width: auto;
    display: inline;
+   
 }
 
 #map-wrap #map-container {
@@ -4225,9 +4251,15 @@ footer h4::after {
  * ----------------------------------------------- */
 #cForm {
    /*margin-top: 3.6rem;*/
+   margin-left:500px;
    padding: 10px;
    background-color:white;
    height:900px;
+   width:400px;
+
+
+
+
 }
 .logar {
    border: solid black 1px ;

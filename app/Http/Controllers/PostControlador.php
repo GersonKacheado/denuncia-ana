@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Storage;
+use Laracasts\Flash\Flash;
 
 class PostControlador extends Controller
 {
@@ -14,31 +15,18 @@ class PostControlador extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+ /*   public function index()
+        {
             $users = User::all();
             $posts = Post::all();
-            return view('listagemdenuncia.index', compact('posts', 'users'));
-     }  
-
-
-     public function listarindex(){
-
-        $users = User::all();
-        $posts = Post::all();
-        return view('/adminhome', compact('posts', 'users'));
-
-
-
-
-
-     }
-    
-    /*public function home()
-    {
-        $posts = POST::All();
-        return view('home', compact(['posts']));
-    }*/
+            return view('denuncia.index', compact('posts', 'users'));
+        }  */
+     public function index()
+        {
+            $users = User::all();
+            $posts = Post::all();
+            return view('denuncia.index', compact('posts', 'users'));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -49,7 +37,6 @@ class PostControlador extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -58,15 +45,28 @@ class PostControlador extends Controller
      */
     public function store(Request $request)
     {
+        $regras = [
+            'mensagem'     => 'required | string  ',
+            'arquivo' => 'required '
+        ];
+        $mensagens = [
+            'mensagem.required' => 'Digite sua mensagem!',
+            'mensagem.min'      => 'O campo mensagem deve conter no mínimo 10 caracteres!',
+            'mensagem.max'      => 'O campo mensagem deve conter no máximo 200 caracteres!'                    
+             ];
+        $request->validate($regras, $mensagens);
+
         $path =  $request->file('arquivo')->store('img', 'public');
         $post = new POST();
         $post->users_id = auth()->id();
-        $post->email = $request->input('email');
+        $post->name = $request->input('name');
         $post->mensagem = $request->input('mensagem');
         $post->arquivo = $path;
         $post->save();
-        return redirect('/');
-    
+      
+        Flash('Sua Denuncia foi enviada com Sucesso! Se preferir denuncie novamente outra denuncia ! Se não tiver outra denuncia aperte o Botão Sair. <i class="fa fa-whatsapp" aria-hidden="true"></i>')->success()->important();
+
+        return view('home');    
     }
     public function download($id)
     {
@@ -74,13 +74,9 @@ class PostControlador extends Controller
         if(isset($posts)){
             $path = Storage::disk('public')->getDriver()->getAdapter()->applyPathPrefix($posts->arquivo);
             return response()->download($path);
-
         }
-        return redirect('/');
-        
+        return redirect('/');        
     }
-
-
     /**
      * Display the specified resource.
      *
@@ -101,9 +97,12 @@ class PostControlador extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $users = User::All();
 
+        $posts = Post::find($id);
+     //   return redirect()->back();
+     return view('denuncia.edit', array('posts'=> $posts, 'users' => $users));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -111,9 +110,16 @@ class PostControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Post $posts)
     {
-        //
+      //  $path =  $request->file('arquivo')->store('img', 'public');
+        $posts->users_id = $request->users_id;
+        $posts->name = $request->input('name');
+        $posts->mensagem = $request->input('mensagem');
+        $posts->arquivo = $request->file('arquivo');
+        $posts->save();
+        return view('denuncia.edit', array('posts'=> $posts));
+
     }
 
     /**
@@ -123,15 +129,14 @@ class PostControlador extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $post = Post::find($id);
-        if (isset($post)){
-            $arquivo = $post->arquivo;
-            Storage::disk('public')->delete('arquivo');
-            $post->delete();
-
+        {
+            $post = Post::find($id);
+            if (isset($post)){
+                $arquivo = $post->arquivo;
+                Storage::disk('public')->delete('arquivo');
+                $post->delete();
+            }
+            return redirect('/');
         }
-        return redirect('/');
-
-    }
 }
+
