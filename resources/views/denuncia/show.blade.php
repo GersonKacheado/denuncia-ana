@@ -42,23 +42,17 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ $post->id }}</td>
-                <td>{{ $post->name }}</td>
-                <td>{{ $post->mensagem }}</td>
-                <td>{{ $post->arquivo }}</td>
+                <td>{{ $posts->id }}</td>
+                <td>{{ $posts->name }}</td>
+                <td>{{ $posts->mensagem }}</td>
+                <td>{{ $posts->arquivo }}</td>
                
               {{--  <td>{{ $user->password }}</td>--}}
               <td>
-                <a href="{{route('')}} " class="btn btn-outline-info">voltar</a>
+                <a href="{{route('post.index')}}" class="btn btn-outline-info">voltar</a>
               </td>
               
-                <td>
-                    <form action="{{ route('') }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger">Apagar</button>                        
-                    </form>
-                </td>                      
+                                 
             </tr>
         </tbody>
     </table>

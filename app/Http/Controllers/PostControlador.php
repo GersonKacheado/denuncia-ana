@@ -68,7 +68,7 @@ class PostControlador extends Controller
 
         return view('home');    
     }
-    public function download($id)
+    /*public function download($id)
     {
         $posts = Post::find($id);
         if(isset($posts)){
@@ -76,18 +76,24 @@ class PostControlador extends Controller
             return response()->download($path);
         }
         return redirect('/');        
-    }
+    }*/////////////////////////////////////// 
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   /* public function show()
+    public function show($id)
     {
-        $post = POST::all();
-        return view('admin', ['Posts' => $post]);
-    }*/
+        if(!$posts = Post::find($id))
+
+        return redirect()->back();
+
+            return view('denuncia.show', ['posts' => $posts]);
+       /* $post = POST::all();
+        return view('post.index', ['post' => $post]);*/
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -100,7 +106,7 @@ class PostControlador extends Controller
         $users = User::All();
 
         $posts = Post::find($id);
-     //   return redirect()->back();
+     
      return view('denuncia.edit', array('posts'=> $posts, 'users' => $users));
     }
     /**
@@ -112,11 +118,13 @@ class PostControlador extends Controller
      */
     public function update(Request $request, $id, Post $posts)
     {
-      //  $path =  $request->file('arquivo')->store('img', 'public');
-        $posts->users_id = $request->users_id;
+        //$path =  $request->file('arquivo')->store('img', 'public');
+        $posts = Post::find($id);
+        //$posts->users_id = $request->users_id;
         $posts->name = $request->input('name');
         $posts->mensagem = $request->input('mensagem');
-        $posts->arquivo = $request->file('arquivo');
+        //$posts->arquivo = $request->file('arquivo');
+        //$posts->arquivo = $request->file('arquivo');
         $posts->save();
         return view('denuncia.edit', array('posts'=> $posts));
 
@@ -130,13 +138,14 @@ class PostControlador extends Controller
      */
     public function destroy($id)
         {
-            $post = Post::find($id);
-            if (isset($post)){
-                $arquivo = $post->arquivo;
-                Storage::disk('public')->delete('arquivo');
-                $post->delete();
-            }
-            return redirect('/');
+
+            $posts = Post::find($id);
+            //  return redirect()->back();                   
+              $posts->delete();
+                  //    return redirect()->route('denuncia.index');
+
+                  return redirect()->route('post.index');
+          
         }
 }
 

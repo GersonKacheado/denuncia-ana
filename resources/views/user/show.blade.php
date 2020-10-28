@@ -49,7 +49,7 @@
                 <td>{{ $user->email }}</td>
               {{--  <td>{{ $user->password }}</td>--}}
               <td>
-                <a href="{{route('user.index')}} " class="btn btn-outline-info">voltar</a>
+                <a href="{{route('user.index')}}" class="btn btn-outline-info">voltar</a>
               </td>
               
                 <td>

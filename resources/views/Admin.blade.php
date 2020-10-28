@@ -50,8 +50,23 @@
       </ul>
       
     </ul>
+    <ul>
+      <a   class="nav-link dropdown-toggle"  href="{{ route('index') }}"
+      onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+       {{ __('Sair') }}
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+       @csrf
+    </form> 
+    </ul>
     </div>
+
+   
   </nav>
+
+  
+
   <!-- /.navbar -->
  
 

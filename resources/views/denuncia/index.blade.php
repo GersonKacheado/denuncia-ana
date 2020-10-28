@@ -79,7 +79,7 @@
                   <td>{{$post->mensagem}}</td>
                   <td width="100px">{{$post->arquivo}}</td>
                   <td >
-                    <a class="btn btn-primary btn-sm" href="">
+                    <a class="btn btn-primary btn-sm" href="{{route('post.show', $post->id)}}">
                                   
                       Mais detalhes
                   </a>
@@ -91,7 +91,7 @@
                   
                    <a class="btn btn-danger btn-sm">
                   
-                       <form action="" method="POST">
+                       <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                            @csrf
                            @method('DELETE')
                            <button type="submit" class="btn btn-danger btn-sm">Apagar</button>                        

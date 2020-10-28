@@ -30,7 +30,7 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::resource('/enviadenuncia', 'PostControlador');
 Route::get('/denuncia', 'PostControlador@home');
 Route::post('/arquivo', 'PostControlador@store');
-Route::delete('/{id}', 'PostControlador@destroy');
+//Route::delete('/{id}', 'PostControlador@destroy');
 Route::get('/download/{id}', 'PostControlador@download');
 
 

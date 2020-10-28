@@ -55,9 +55,7 @@ class UserController extends Controller
 
         return redirect()->back();
 
-            return view('user.show', [
-                        'user' => $user
-                    ]);
+            return view('user.show', ['user' => $user]);
     }
 
 

@@ -63,17 +63,7 @@
            @enderror       
    </div>
 
-   <div class="form-field">
-    <label for="users_id">usuario:</label>       
-        <input  id="cName" type="text" class="form-control @error('users_id') is-invalid @enderror"  value="{{ $posts->users_id }}">
-        @error('users_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror       
-</div>
   
-
 
 
    <div class="form-field">
